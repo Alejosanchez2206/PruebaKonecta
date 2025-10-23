@@ -1,0 +1,207 @@
+.dashboard-page {
+  margin: 1rem;
+  height: 80%;
+
+}
+
+.container-dashboard {
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 2rem;
+
+ 
+  height: calc(100vh - 120px);
+
+ 
+  overflow-y: auto;
+  overflow-x: hidden;
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+
+  scroll-behavior: smooth;
+}
+
+/* Personalización del scroll (opcional, moderno y bonito) */
+.container-dashboard::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container-dashboard::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4); /* color principal (indigo) */
+  border-radius: 10px;
+}
+
+.container-dashboard::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+.container-dashboard::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* Estado de carga */
+.dashboard-loading, .dashboard-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-size: 1.1rem;
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #ccc;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Header */
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+.dashboard-periodo {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Tarjetas */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+.card {
+  border-radius: 14px;
+  padding: 1.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  height: 5rem;
+
+}
+.card:hover { transform: scale(1.03); }
+
+.card-icon svg {
+  width: 40px;
+  height: 40px;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+.card-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  float: right;
+}
+.card-value {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.card-indigo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+.card-green { background: linear-gradient(135deg, #10b981, #059669); }
+.card-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.card-amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+/* Gráficos */
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.chart-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.chart-box h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* Tablas */
+.dashboard-tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.table-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.table-box h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  transition: background 0.3s;
+}
+.table-row:hover { background: #f1f5f9; }
+
+.table-rank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.table-info {
+  flex: 1;
+  margin-left: 0.8rem;
+}
+.table-info .name {
+  font-weight: 600;
+  color: #222;
+}
+.table-info .detail {
+  font-size: 0.85rem;
+  color: #555;
+}
+.table-value {
+  font-weight: 600;
+  color: #6366f1;
+}
+
+/* Clase para ocultar la barra de desplazamiento pero mantener el scroll funcional */
+.hide-scroll {
+  /* For Firefox */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.hide-scroll::-webkit-scrollbar {
+  width: 0px;  /* Chrome, Safari, Opera */
+  height: 0px;
+}

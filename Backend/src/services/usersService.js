@@ -65,6 +65,7 @@ const loginUser = async (email, password) => {
             email: user.email,
             rol_id: user.rol_id,
             company_id: user.company_id,
+            id: user.id,
             token: token
         }
         return {
@@ -132,9 +133,11 @@ const updateUser = async (id, userData) => {
 
         if (!userData.password || userData.password.trim() === '') {
             delete userData.password;
-        }
+        } else {
+            const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
+            userData.password = hashedPassword;
 
-        console.log('Actualizando usuario con datos:', userData);
+        }
         await user.update(userData);
 
         return {

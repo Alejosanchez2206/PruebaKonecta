@@ -22,4 +22,25 @@ const getCompanyById = async (id) => {
     }
 };
 
-module.exports = { createCompany, getCompanyById };
+const updateCompany = async (id, companyData) => {
+    try {
+        const company = await companyModel.findByPk(id);
+        if (!company) {
+            return {
+                success: false,
+                message: 'Compañía no encontrada'
+            };
+        }
+        await company.update(companyData);
+        return {
+            success: true,
+            message: 'Compañía actualizada exitosamente'
+        };
+    } catch (error) {
+        console.error('Error al actualizar la compañía:', error);
+        throw error;
+    }
+};
+
+
+module.exports = { createCompany, getCompanyById , updateCompany };

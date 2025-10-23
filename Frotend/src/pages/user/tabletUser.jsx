@@ -5,7 +5,7 @@ const TablaUsuarios = ({ dataUser, editarUser, eliminarUser }) => {
 
     // Estado para paginación
     const [paginaActual, setPaginaActual] = useState(1)
-    const filasPorPagina = 5
+    const filasPorPagina = 8
 
     // Cálculo de datos para la página actual
     const indiceUltimaFila = paginaActual * filasPorPagina

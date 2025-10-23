@@ -1,16 +1,57 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Frotend - Prueba Koneta
 
-Currently, two official plugins are available:
+Aplicación cliente construida con React y Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Requisitos
 
-## React Compiler
+- Node.js >= 14
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Instalación y ejecución
 
-## Expanding the ESLint configuration
+1. Ir a la carpeta del frontend:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+   cd Frotend
+
+2. Instalar dependencias:
+
+   npm install
+
+3. Ejecutar en modo desarrollo:
+
+   npm run dev
+
+La aplicación se sirve por defecto en `http://localhost:5173`.
+
+Scripts disponibles
+
+- `npm run dev` - Arranca Vite en modo desarrollo.
+- `npm run build` - Genera la build de producción.
+- `npm run preview` - Sirve la build para previsualización.
+- `npm run lint` - Ejecuta ESLint sobre el proyecto.
+
+Configuración y conexión con Backend
+
+- El backend por defecto se espera en `http://localhost:3001` (ver `Backend/`).
+- Los servicios que llaman al backend están en `src/service/rol.js` y `src/service/user.js`. Busca una constante `BASE_URL` o similar dentro de esos archivos y ajústala si tu backend corre en otra URL o puerto.
+
+Ejemplo: cambiar la base URL (ejemplo conceptual)
+
+```
+// Frotend/src/service/user.js
+const BASE_URL = process.env.VITE_API_URL || 'http://localhost:3001';
+```
+
+Considera usar variables de entorno de Vite (archivos `.env`) para configurar `VITE_API_URL` en desarrollo o producción.
+
+Estructura importante
+
+- `src/component` - Componentes compartidos (header, layout, modal)
+- `src/context/AuthContext.jsx` - Contexto para autenticación
+- `src/pages` - Páginas de la app (login, usuarios, ventas...)
+
+Notas de desarrollo
+
+- Vite está configurado en `vite.config.js`.
+- El proyecto incluye ESLint; ejecuta `npm run lint` para chequear estilo.
+

@@ -1,6 +1,6 @@
 import './index.css';
 
-export default function Header({ icon, title  , actionsNew}) {
+export default function Header({ icon, title, actionsNew, nameAction }) {
   return (
     <header className="app-header">
       <i className={`bi ${icon} header-icon`}></i>
@@ -11,8 +11,7 @@ export default function Header({ icon, title  , actionsNew}) {
           className="header-action-button"
           onClick={actionsNew}
         >
-          <i className="bi bi-plus"></i>
-          Nuevo
+          {nameAction || 'Nuevo'}
         </button>
       </div>
     </header>

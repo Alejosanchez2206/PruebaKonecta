@@ -1,22 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, NavLink } from "react-router";
 import './index.css';
 
-const navItems = [
-  { name: 'Dashboard', link: '/dashboard', icon: 'bi-app' },
-  { name: 'Ventas', link: '/ventas', icon: 'bi-bag' },
-  { name: 'Usuarios', link: '/usuarios', icon: 'bi-person' },
-  { name : 'Empresa', link: '/empresas', icon: 'bi-building' }
+const allNavItems = [
+  { name: 'Dashboard', link: '/dashboard', icon: 'bi-app', roles: [1] },
+  { name: 'Ventas', link: '/ventas', icon: 'bi-bag', roles: [1, 2] },
+  { name: 'Usuarios', link: '/usuarios', icon: 'bi-person', roles: [1] },
 ];
 
 export const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [navItems, setNavItems] = useState([]);
+  const [userRole, setUserRole] = useState(null);
 
- const logout = () => {
+  useEffect(() => {
+    // Obtener el usuario del localStorage
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      const user = JSON.parse(userString);
+      const rolId = parseInt(user.rol_id, 10);
+      setUserRole(rolId);
+
+      // Filtrar los items del menú según el rol
+      const filteredItems = allNavItems.filter(item =>
+        item.roles.includes(rolId)
+      );
+      setNavItems(filteredItems);
+    }
+  }, []);
+
+  const logout = () => {
     localStorage.removeItem('user');
     window.location.href = '/';
-}
-
+  }
 
   return (
     <div className="layout-container">
@@ -37,17 +53,18 @@ export const Layout = () => {
               <NavLink
                 key={item.name}
                 to={item.link}
-                className={({ isActive }) => `nav-button ${isActive ? 'active' : ''}`}                
+                className={({ isActive }) => `nav-button ${isActive ? 'active' : ''}`}
               >
                 <i className={`bi ${item.icon}`}></i>
                 <span>{item.name}</span>
               </NavLink>
             ))}
-            <button type="button" 
-            className="nav-button settings-button"
-            onClick={logout}
+            <button
+              type="button"
+              className="nav-button settings-button"
+              onClick={logout}
             >
-              <i className="bi bi-box-arrow-right"></i>              
+              <i className="bi bi-box-arrow-right"></i>
               <span>Cerrar sesión</span>
             </button>
           </nav>

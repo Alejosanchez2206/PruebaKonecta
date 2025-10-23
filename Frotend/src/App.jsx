@@ -7,6 +7,8 @@ import { lazy } from "react";
 
 const VentasComponent = lazy(() => import('./pages/ventas'));
 const UserPage = lazy(() => import('./pages/user'));
+const DashboardPage = lazy(() => import('./pages/dashboard'));
+
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
           <Route path="/" element={<LoginForm />} />
           <Route element={<PrivateRoutes />}>
             <Route element={<Layout />}>
-              <Route path="/dashboard" element={<h1>Dashboard - Protected Route</h1>} />
+              <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/ventas" element={<VentasComponent />} />
               <Route path="/usuarios" element={<UserPage />} />
               <Route path="/*" element={<h1>404 - Not Found</h1>} />

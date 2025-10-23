@@ -1,0 +1,154 @@
+.layout-container {
+  margin: 0 !important;
+    padding: 0 !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;  
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    height: 100dvh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    width: 56px;
+    background: rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+    transition: width 0.45s ease;
+}
+
+.sidebar.open {
+    width: 190px;
+}
+
+.sidebar-inner {
+    width: 190px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #f9f9f9;
+    font-family: "Euclid Circular B", sans-serif
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 6px;
+}
+
+.sidebar-burger {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: none;
+    color: #f9f9f9;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Navigation */
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 6px;
+    gap: 3px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+    width: 100%;
+    padding: 0 12px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #f9f9f9;
+    font-family: "Euclid Circular B", sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+    opacity: 1;
+    width: unset;
+}
+
+.nav-button.active {
+    
+    opacity: 1;
+    width: unset;
+}
+
+.nav-button i {
+    font-size: 18px;
+}
+
+.nav-button span {
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.sidebar.open .nav-button span {
+    opacity: 1;
+}
+
+/* Tooltip effect for closed sidebar */
+.sidebar:not(.open) .nav-button:hover span {
+    position: absolute;
+    left: 60px;
+    opacity: 1;
+    background: #121113;
+    backdrop-filter: blur(10px);
+    padding: 8px 12px;
+    border-radius: 6px;
+    transform: translateX(8px);
+}
+
+.sidebar:not(.open) .nav-button:hover span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    background: #121113;
+    transform: translateY(-50%) rotate(45deg);
+    border-radius: 1px;
+}
+
+/* Settings button */
+.settings-button {
+    margin-top: auto;
+    margin-bottom: 8px;
+}
+
+/* Main content */
+.layout-main {
+    margin-left: 76px;
+    transition: margin-left 0.45s ease;
+    width: calc(100%);
+}
+
+.sidebar.open+.layout-main {
+    margin-left: 14rem;
+}

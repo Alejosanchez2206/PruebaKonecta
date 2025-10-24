@@ -20,6 +20,3 @@ SOURCE seed_ventas.sql;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- Alternativa: si prefieres un solo archivo sin SOURCE, ejecuta:
--- cat seed_roles.sql seed_companies.sql seed_users.sql seed_ventas.sql > all_inserts.sql
--- y luego: mysql -u <usuario> -p <db> < all_inserts.sql

@@ -1,6 +1,3 @@
-¡Claro! Aquí tienes una versión mejorada y más pulida del `README.md` para el directorio de SQL Seeds de Konetta. He optimizado la redacción, la estructura y la claridad para facilitar su comprensión y uso:
-
----
 
 # 🧩 Konetta — Inicialización de Base de Datos con SQL Seeds
 
